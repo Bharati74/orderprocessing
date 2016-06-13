@@ -1,0 +1,18 @@
+2016/06/12 04:54:46 PM : root : INFO : Valid order:   {'Lines': [{'Quantity': '1', 'Product': 'A'}, {'Quantity': '1', 'Product': 'C'}], 'Header': 1}
+2016/06/12 04:54:46 PM : root : INFO : Valid order:   {'Lines': [{'Quantity': '5', 'Product': 'E'}], 'Header': 2}
+2016/06/12 04:54:46 PM : root : INFO : Valid order:   {'Lines': [{'Quantity': '4', 'Product': 'D'}], 'Header': 3}
+2016/06/12 04:54:46 PM : root : INFO : Valid order:   {'Lines': [{'Quantity': '1', 'Product': 'A'}, {'Quantity': '1', 'Product': 'C'}], 'Header': 4}
+2016/06/12 04:54:46 PM : root : INFO : Valid order:   {'Lines': [{'Quantity': '3', 'Product': 'B'}], 'Header': 5}
+2016/06/12 04:54:46 PM : root : INFO : Valid order:   {'Lines': [{'Quantity': '4', 'Product': 'D'}], 'Header': 6}
+2016/06/12 04:54:46 PM : root : INFO : Result: 1: 1,0,1,0,0::1,0,1,0,0::0,0,0,0,0
+2016/06/12 04:54:46 PM : root : INFO : Result: 2: 0,0,0,0,5::0,0,0,0,0::0,0,0,0,5
+2016/06/12 04:54:46 PM : root : INFO : Result: 3: 0,0,0,4,0::0,0,0,0,0::0,0,0,4,0
+2016/06/12 04:54:46 PM : root : INFO : Result: 4: 1,0,1,0,0::1,0,0,0,0::0,0,1,0,0
+2016/06/12 04:54:46 PM : root : INFO : All products inventory is 0, stopping order processing.
+2016/06/12 04:54:46 PM : root : INFO : Result: 5: 0,3,0,0,0::0,3,0,0,0::0,0,0,0,0
+2016/06/12 04:54:46 PM : root : INFO : Done queue: Process-2 completed {'Lines': [{'Quantity': '1', 'Product': 'A'}, {'Quantity': '1', 'Product': 'C'}], 'Header': 1}.
+2016/06/12 04:54:46 PM : root : INFO : Done queue: Process-3 completed {'Lines': [{'Quantity': '5', 'Product': 'E'}], 'Header': 2}.
+2016/06/12 04:54:46 PM : root : INFO : Done queue: Process-2 completed {'Lines': [{'Quantity': '4', 'Product': 'D'}], 'Header': 3}.
+2016/06/12 04:54:46 PM : root : INFO : Done queue: Process-3 completed {'Lines': [{'Quantity': '1', 'Product': 'A'}, {'Quantity': '1', 'Product': 'C'}], 'Header': 4}.
+2016/06/12 04:54:46 PM : root : INFO : Done queue: Process-2 completed {'Lines': [{'Quantity': '3', 'Product': 'B'}], 'Header': 5}.
+2016/06/12 04:54:46 PM : root : INFO : Completed. took 0.4752838611602783 seconds
