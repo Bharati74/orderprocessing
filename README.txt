@@ -14,7 +14,7 @@ Notes:
 
 INSTRUCTIONS:
 
-The app is designed (arguments) to run in production mode or test mode:
+The app is designed (different arguments) to run in production mode or test mode:
     1. python3.5 orderprocessing.py
           a. To randomly generate orders.
           b. Use database with initial defaults of large quantities (>100) as requested.
@@ -49,6 +49,28 @@ The folder 'shipwire' contains:
                                                            DB with given small quantities in the exercise example.
                             orders.log                     log file created/updated for each run
                             
+                            
+Version 1.1 (June 15, 2016)
+
+Fixed:        Stopping processsing when all inventry is zero
+KNOWN_ISSUE:  None
+
+Modified:
+1. ordersource.py
+   gen_order() -- simplified creating sample product list to choose from, for random generation
+                  reduced invalid product names to get more VALID orders.
+                  includes unit testing, order validation when run as standalone program to gen orders.
+                  out_ordersource_console.txt  output
+2. orderprocessing.py
+               -- corrected code, now given exercise works fine as expected, consistently.
+                  out_exercise_console.txt   (console output and log file)
+                  tried to simplify display function to use join, did not work
+
+3. TODO            use SQLite command, if availabl, which can return the sum of all inventory data.           
+                            
+-----------------------------------------------------------------------------------------------------
+
+Version 1.0 (June 12, 2016)
 
 KNOWN ISSUE:
 1. When inventory is zero, does not ALWAYS HALT immediately as shown below in all runs, sometimes it does,

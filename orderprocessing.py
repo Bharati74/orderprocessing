@@ -1,5 +1,5 @@
 """
- overprocessing.py  - Main Python source file for the app.
+ orderprocessing.py  - Main Python source file for the app.
  
  App to process orders and allocate products if instock, otherwise backorder items
  not fully fulfilled. As a data source, orders are randomly generated as required.
@@ -8,7 +8,7 @@
  
  The modules use Multiprocessing: Manager, Process, Pool, Queue, Lock, current_process
  
- Inventory data is maintained in the Sqlite3 DB: invnetory.db
+ Inventory data is maintained in the Sqlite3 DB: inventory.db
 
     usage:
        1. python3.5 orderprocessing.py
@@ -39,8 +39,8 @@ from ordersource import gen_order, validate_order
 logging.basicConfig(filename='orders.log', level=logging.DEBUG,
                     format='%(asctime)s : %(name)s : %(levelname)s : %(message)s', datefmt='%Y/%m/%d %I:%M:%S %p')
 logging.getLogger('orderprocessing').setLevel(logging.CRITICAL)
-logger = logging.getLogger(__name__)
-
+#logger = logging.getLogger(__name__)
+logger = logging.getLogger('orderproc')
 
 # private function for testing, must be called after initial DB is created.
 def __test_sample(order_queue):
@@ -96,8 +96,8 @@ def display_result(hdr, ordered_d, allocated_d, backorder_d):
     order_s = order_s.rstrip(',')
     alloc_s = alloc_s.rstrip(',')
     backo_s = backo_s.rstrip(',')
-    result = result + order_s  + '::' + alloc_s + '::' + backo_s
 
+    result = result + order_s  + '::' + alloc_s + '::' + backo_s
     logging.info("Result: %s" %(result))
     print (result)
                 
@@ -177,12 +177,9 @@ def worker(order_queue, done_queue, lock, stop_flag):
     
     """
     try:
-        if stop_flag['stop'] == 1:
-            return
         for order in iter(order_queue.get, 'STOP'):
             if stop_flag['stop'] == 1:
-                # must exhaust getting orders out of Queue
-                #break
+                # must exhaust getting orders out of Queue, don't process
                 pass
             else:
                 process_order(order, lock, stop_flag)
@@ -193,22 +190,8 @@ def worker(order_queue, done_queue, lock, stop_flag):
 
             
 def main():
-    """Main function to process all orders using multiprocessing module.
-    
-    It is designed to process randomly generated orders, as in production and
-    also test using the order examples given in the exercise.
-    
-    usage:
-       1. python3.5 orderprocessing.py
-          a. To randomly generate orders.
-          b. Use database with initial defaults of large quantities (>100) as requested.
-       2. python3.5 orderprocessing.py test
-          a. To use sample orders given in the exercise.
-          b. Upate database with smaller quantities as requested in the exercise.
-          c. This will help compare the results by this app and in the exercise (proofpoint).
-          
-    """
-   
+    """Main function to process all orders using multiprocessing module."""
+ 
     # For this exercise, create new db with all initial data as expected.
     create_db(True)
                
@@ -240,27 +223,22 @@ def main():
                     logging.info("Invalid order: %s" %(order_toprocess))
         
         # Common code for 'production' or 'test' orders
-        # when no inventory, stop processing orders
+        # when no inventory, stop processing orders.
+        # Manager , server processs, 1 for all distributed servers, is preferable.
+        # Preferable to use Managers's dict, list, etc than shared memory Value, Array
         stop_flag = mgr.dict()
         stop_flag['stop'] = 0
         done_queue = mgr.Queue()
-        lock = mgr.Lock()
-        processes = []   
+        lock = mgr.Lock()   
         for w in range(CPUS):
             p = Process(target=worker, args=(order_queue, done_queue, lock, stop_flag))
             p.start()
-            processes.append(p)
             order_queue.put('STOP')
+            p.join()
+                  
             if stop_flag['stop'] == 1:
                 done_queue.put('STOP')
-                order_queue.put('STOP')
-                # empty out the queue, just in case any left
-                for i in iter(order_queue, 'STOP'):
-                    order_queue.get()
-                break
-        
-        for p in processes:
-            p.join()
+                #order_queue.put('STOP')
         
         done_queue.put('STOP')
     

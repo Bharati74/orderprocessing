@@ -1,0 +1,58 @@
+------ Console output from: ordersource.py
+
+/Users/bharati/samples/shipwire$python3.5 ordersource.py
+Valid:   {'Lines': [{'Quantity': '1', 'Product': 'A'}, {'Quantity': '1', 'Product': 'C'}], 'Header': 1}
+ERROR:root:Invalid order, total quantity ordered is 0: {'Lines': [{'Quantity': '0', 'Product': 'B'}, {'Quantity': '0', 'Product': 'C'}], 'Header': 2}
+Invalid: {'Lines': [{'Quantity': '0', 'Product': 'B'}, {'Quantity': '0', 'Product': 'C'}], 'Header': 2}
+ERROR:root:Invalid order, incorrect product and/or quantity value
+Invalid: {'Lines': [{'Quantity': '1', 'Product': 'G'}], 'Header': 3}
+ERROR:root:Invalid order, incorrect product and/or quantity value
+Invalid: {'Lines': [{'Quantity': '6', 'Product': 'D'}], 'Header': 5}
+ERROR:root:Invalid order, Header not greater than 0: {'Lines': [{'Quantity': '5', 'Product': 'E'}, {'Quantity': '1', 'Product': 'D'}], 'Header': 0}
+Invalid: {'Lines': [{'Quantity': '5', 'Product': 'E'}, {'Quantity': '1', 'Product': 'D'}], 'Header': 0}
+ERROR:root:Exception for Header in {'Lines': [{'Quantity': '1', 'Product': 'A'}, {'Quantity': '1', 'Product': 'C'}], 'Hdr': 1}
+Traceback (most recent call last):
+  File "ordersource.py", line 85, in validate_order
+    hdr = order[HEADER]
+KeyError: 'Header'
+Invalid: {'Lines': [{'Quantity': '1', 'Product': 'A'}, {'Quantity': '1', 'Product': 'C'}], 'Hdr': 1}
+ERROR:root:Exception for Lines in {'Linesss': [{'Quantity': '1', 'Product': 'A'}], 'Header': 1}
+Traceback (most recent call last):
+  File "ordersource.py", line 91, in validate_order
+    lines = order[LINES]
+KeyError: 'Lines'
+Invalid: {'Linesss': [{'Quantity': '1', 'Product': 'A'}], 'Header': 1}
+ERROR:root:Invalid order, incorrect product and/or quantity value
+False {'Lines': [{'Quantity': '6', 'Product': 'B'}, {'Quantity': '6', 'Product': 'C'}, {'Quantity': '1', 'Product': 'F'}], 'Header': 1}
+ERROR:root:Invalid order, incorrect product and/or quantity value
+False {'Lines': [{'Quantity': '6', 'Product': 'A'}, {'Quantity': '6', 'Product': 'E'}, {'Quantity': '4', 'Product': 'B'}, {'Quantity': '2', 'Product': 'D'}, {'Quantity': '1', 'Product': 'C'}], 'Header': 1}
+ERROR:root:Invalid order, incorrect product and/or quantity value
+False {'Lines': [{'Quantity': '2', 'Product': 'D'}, {'Quantity': '6', 'Product': 'B'}], 'Header': 1}
+True {'Lines': [{'Quantity': '3', 'Product': 'B'}], 'Header': 1}
+ERROR:root:Invalid order, incorrect product and/or quantity value
+False {'Lines': [{'Quantity': '6', 'Product': 'B'}], 'Header': 2}
+True {'Lines': [{'Quantity': '4', 'Product': 'E'}, {'Quantity': '1', 'Product': 'C'}, {'Quantity': '2', 'Product': 'A'}], 'Header': 2}
+True {'Lines': [{'Quantity': '3', 'Product': 'A'}, {'Quantity': '3', 'Product': 'E'}], 'Header': 2}
+ERROR:root:Invalid order, incorrect product and/or quantity value
+False {'Lines': [{'Quantity': '6', 'Product': 'E'}, {'Quantity': '3', 'Product': 'A'}], 'Header': 2}
+True {'Lines': [{'Quantity': '4', 'Product': 'A'}, {'Quantity': '0', 'Product': 'B'}, {'Quantity': '0', 'Product': 'C'}, {'Quantity': '1', 'Product': 'D'}], 'Header': 3}
+True {'Lines': [{'Quantity': '1', 'Product': 'E'}], 'Header': 3}
+ERROR:root:Invalid order, incorrect product and/or quantity value
+False {'Lines': [{'Quantity': '3', 'Product': 'E'}, {'Quantity': '6', 'Product': 'B'}, {'Quantity': '4', 'Product': 'A'}, {'Quantity': '3', 'Product': 'D'}, {'Quantity': '4', 'Product': 'F'}], 'Header': 3}
+ERROR:root:Invalid order, incorrect product and/or quantity value
+False {'Lines': [{'Quantity': '2', 'Product': 'F'}, {'Quantity': '4', 'Product': 'B'}, {'Quantity': '4', 'Product': 'C'}, {'Quantity': '5', 'Product': 'D'}], 'Header': 3}
+True {'Lines': [{'Quantity': '5', 'Product': 'C'}, {'Quantity': '0', 'Product': 'E'}, {'Quantity': '3', 'Product': 'D'}], 'Header': 4}
+ERROR:root:Invalid order, incorrect product and/or quantity value
+False {'Lines': [{'Quantity': '3', 'Product': 'A'}, {'Quantity': '0', 'Product': 'F'}], 'Header': 4}
+True {'Lines': [{'Quantity': '2', 'Product': 'C'}], 'Header': 4}
+ERROR:root:Invalid order, incorrect product and/or quantity value
+False {'Lines': [{'Quantity': '5', 'Product': 'C'}, {'Quantity': '3', 'Product': 'F'}, {'Quantity': '0', 'Product': 'B'}], 'Header': 4}
+ERROR:root:Invalid order, incorrect product and/or quantity value
+False {'Lines': [{'Quantity': '6', 'Product': 'F'}, {'Quantity': '4', 'Product': 'E'}], 'Header': 5}
+ERROR:root:Invalid order, incorrect product and/or quantity value
+False {'Lines': [{'Quantity': '3', 'Product': 'D'}, {'Quantity': '0', 'Product': 'F'}, {'Quantity': '0', 'Product': 'E'}, {'Quantity': '6', 'Product': 'B'}], 'Header': 5}
+ERROR:root:Invalid order, incorrect product and/or quantity value
+False {'Lines': [{'Quantity': '3', 'Product': 'A'}, {'Quantity': '1', 'Product': 'C'}, {'Quantity': '2', 'Product': 'B'}, {'Quantity': '3', 'Product': 'D'}, {'Quantity': '5', 'Product': 'F'}], 'Header': 5}
+ERROR:root:Invalid order, incorrect product and/or quantity value
+False {'Lines': [{'Quantity': '6', 'Product': 'E'}], 'Header': 5}
+

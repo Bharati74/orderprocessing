@@ -1,0 +1,52 @@
+2016/06/16 12:46:47 AM : root : INFO : Valid order:   {'Header': 1, 'Lines': [{'Quantity': '1', 'Product': 'D'}, {'Quantity': '5', 'Product': 'C'}, {'Quantity': '0', 'Product': 'A'}, {'Quantity': '0', 'Product': 'E'}]}
+2016/06/16 12:46:47 AM : root : INFO : Valid order:   {'Header': 1, 'Lines': [{'Quantity': '3', 'Product': 'E'}, {'Quantity': '5', 'Product': 'C'}, {'Quantity': '5', 'Product': 'A'}]}
+2016/06/16 12:46:47 AM : root : ERROR : Invalid order, incorrect product and/or quantity value 
+2016/06/16 12:46:47 AM : root : INFO : Invalid order: {'Header': 2, 'Lines': [{'Quantity': '3', 'Product': 'F'}]}
+2016/06/16 12:46:47 AM : root : ERROR : Invalid order, incorrect product and/or quantity value 
+2016/06/16 12:46:47 AM : root : INFO : Invalid order: {'Header': 3, 'Lines': [{'Quantity': '1', 'Product': 'A'}, {'Quantity': '3', 'Product': 'F'}, {'Quantity': '1', 'Product': 'E'}, {'Quantity': '0', 'Product': 'D'}]}
+2016/06/16 12:46:47 AM : root : ERROR : Invalid order, incorrect product and/or quantity value 
+2016/06/16 12:46:47 AM : root : INFO : Invalid order: {'Header': 4, 'Lines': [{'Quantity': '5', 'Product': 'E'}, {'Quantity': '0', 'Product': 'D'}, {'Quantity': '0', 'Product': 'F'}]}
+2016/06/16 12:46:47 AM : root : ERROR : Invalid order, incorrect product and/or quantity value 
+2016/06/16 12:46:47 AM : root : INFO : Invalid order: {'Header': 5, 'Lines': [{'Quantity': '6', 'Product': 'E'}, {'Quantity': '4', 'Product': 'C'}, {'Quantity': '5', 'Product': 'B'}]}
+2016/06/16 12:46:47 AM : root : INFO : Valid order:   {'Header': 6, 'Lines': [{'Quantity': '2', 'Product': 'E'}, {'Quantity': '3', 'Product': 'C'}]}
+2016/06/16 12:46:47 AM : root : INFO : Valid order:   {'Header': 2, 'Lines': [{'Quantity': '0', 'Product': 'E'}, {'Quantity': '2', 'Product': 'A'}]}
+2016/06/16 12:46:47 AM : root : INFO : Valid order:   {'Header': 7, 'Lines': [{'Quantity': '2', 'Product': 'C'}]}
+2016/06/16 12:46:47 AM : root : ERROR : Invalid order, incorrect product and/or quantity value 
+2016/06/16 12:46:47 AM : root : INFO : Invalid order: {'Header': 3, 'Lines': [{'Quantity': '0', 'Product': 'C'}, {'Quantity': '0', 'Product': 'D'}, {'Quantity': '0', 'Product': 'A'}, {'Quantity': '6', 'Product': 'F'}]}
+2016/06/16 12:46:47 AM : root : INFO : Valid order:   {'Header': 8, 'Lines': [{'Quantity': '4', 'Product': 'D'}, {'Quantity': '1', 'Product': 'A'}, {'Quantity': '0', 'Product': 'C'}, {'Quantity': '0', 'Product': 'B'}, {'Quantity': '0', 'Product': 'E'}]}
+2016/06/16 12:46:47 AM : root : INFO : Valid order:   {'Header': 4, 'Lines': [{'Quantity': '1', 'Product': 'D'}, {'Quantity': '5', 'Product': 'B'}]}
+2016/06/16 12:46:47 AM : root : ERROR : Invalid order, incorrect product and/or quantity value 
+2016/06/16 12:46:47 AM : root : INFO : Invalid order: {'Header': 9, 'Lines': [{'Quantity': '2', 'Product': 'A'}, {'Quantity': '1', 'Product': 'C'}, {'Quantity': '1', 'Product': 'F'}, {'Quantity': '4', 'Product': 'E'}]}
+2016/06/16 12:46:47 AM : root : ERROR : Invalid order, total quantity ordered is 0: {'Header': 5, 'Lines': [{'Quantity': '0', 'Product': 'E'}]}
+2016/06/16 12:46:47 AM : root : INFO : Invalid order: {'Header': 5, 'Lines': [{'Quantity': '0', 'Product': 'E'}]}
+2016/06/16 12:46:47 AM : root : ERROR : Invalid order, incorrect product and/or quantity value 
+2016/06/16 12:46:47 AM : root : INFO : Invalid order: {'Header': 10, 'Lines': [{'Quantity': '1', 'Product': 'A'}, {'Quantity': '2', 'Product': 'B'}, {'Quantity': '6', 'Product': 'F'}]}
+2016/06/16 12:46:47 AM : root : ERROR : Invalid order, incorrect product and/or quantity value 
+2016/06/16 12:46:47 AM : root : INFO : Invalid order: {'Header': 6, 'Lines': [{'Quantity': '6', 'Product': 'E'}, {'Quantity': '5', 'Product': 'D'}, {'Quantity': '5', 'Product': 'C'}]}
+2016/06/16 12:46:47 AM : root : INFO : Valid order:   {'Header': 11, 'Lines': [{'Quantity': '2', 'Product': 'D'}, {'Quantity': '1', 'Product': 'E'}]}
+2016/06/16 12:46:47 AM : root : INFO : Valid order:   {'Header': 7, 'Lines': [{'Quantity': '4', 'Product': 'C'}, {'Quantity': '2', 'Product': 'D'}]}
+2016/06/16 12:46:47 AM : root : INFO : Valid order:   {'Header': 12, 'Lines': [{'Quantity': '3', 'Product': 'A'}]}
+2016/06/16 12:46:47 AM : root : INFO : Valid order:   {'Header': 8, 'Lines': [{'Quantity': '4', 'Product': 'D'}, {'Quantity': '1', 'Product': 'A'}, {'Quantity': '0', 'Product': 'E'}]}
+2016/06/16 12:46:47 AM : root : INFO : Result: 1: 0,0,5,1,0::0,0,5,1,0::0,0,0,0,0
+2016/06/16 12:46:47 AM : root : INFO : Result: 1: 5,0,5,0,3::5,0,5,0,3::0,0,0,0,0
+2016/06/16 12:46:47 AM : root : INFO : Result: 6: 0,0,3,0,2::0,0,3,0,2::0,0,0,0,0
+2016/06/16 12:46:47 AM : root : INFO : Result: 2: 2,0,0,0,0::2,0,0,0,0::0,0,0,0,0
+2016/06/16 12:46:47 AM : root : INFO : Result: 7: 0,0,2,0,0::0,0,2,0,0::0,0,0,0,0
+2016/06/16 12:46:47 AM : root : INFO : Result: 8: 1,0,0,4,0::1,0,0,4,0::0,0,0,0,0
+2016/06/16 12:46:47 AM : root : INFO : Result: 4: 0,5,0,1,0::0,5,0,1,0::0,0,0,0,0
+2016/06/16 12:46:47 AM : root : INFO : Result: 11: 0,0,0,2,1::0,0,0,2,1::0,0,0,0,0
+2016/06/16 12:46:47 AM : root : INFO : Result: 7: 0,0,4,2,0::0,0,4,2,0::0,0,0,0,0
+2016/06/16 12:46:47 AM : root : INFO : Result: 12: 3,0,0,0,0::3,0,0,0,0::0,0,0,0,0
+2016/06/16 12:46:47 AM : root : INFO : Result: 8: 1,0,0,4,0::1,0,0,4,0::0,0,0,0,0
+2016/06/16 12:46:47 AM : root : INFO : Done queue: Process-4 completed {'Header': 1, 'Lines': [{'Quantity': '1', 'Product': 'D'}, {'Quantity': '5', 'Product': 'C'}, {'Quantity': '0', 'Product': 'A'}, {'Quantity': '0', 'Product': 'E'}]}.
+2016/06/16 12:46:47 AM : root : INFO : Done queue: Process-4 completed {'Header': 1, 'Lines': [{'Quantity': '3', 'Product': 'E'}, {'Quantity': '5', 'Product': 'C'}, {'Quantity': '5', 'Product': 'A'}]}.
+2016/06/16 12:46:47 AM : root : INFO : Done queue: Process-4 completed {'Header': 6, 'Lines': [{'Quantity': '2', 'Product': 'E'}, {'Quantity': '3', 'Product': 'C'}]}.
+2016/06/16 12:46:47 AM : root : INFO : Done queue: Process-4 completed {'Header': 2, 'Lines': [{'Quantity': '0', 'Product': 'E'}, {'Quantity': '2', 'Product': 'A'}]}.
+2016/06/16 12:46:47 AM : root : INFO : Done queue: Process-4 completed {'Header': 7, 'Lines': [{'Quantity': '2', 'Product': 'C'}]}.
+2016/06/16 12:46:47 AM : root : INFO : Done queue: Process-4 completed {'Header': 8, 'Lines': [{'Quantity': '4', 'Product': 'D'}, {'Quantity': '1', 'Product': 'A'}, {'Quantity': '0', 'Product': 'C'}, {'Quantity': '0', 'Product': 'B'}, {'Quantity': '0', 'Product': 'E'}]}.
+2016/06/16 12:46:47 AM : root : INFO : Done queue: Process-4 completed {'Header': 4, 'Lines': [{'Quantity': '1', 'Product': 'D'}, {'Quantity': '5', 'Product': 'B'}]}.
+2016/06/16 12:46:47 AM : root : INFO : Done queue: Process-4 completed {'Header': 11, 'Lines': [{'Quantity': '2', 'Product': 'D'}, {'Quantity': '1', 'Product': 'E'}]}.
+2016/06/16 12:46:47 AM : root : INFO : Done queue: Process-4 completed {'Header': 7, 'Lines': [{'Quantity': '4', 'Product': 'C'}, {'Quantity': '2', 'Product': 'D'}]}.
+2016/06/16 12:46:47 AM : root : INFO : Done queue: Process-4 completed {'Header': 12, 'Lines': [{'Quantity': '3', 'Product': 'A'}]}.
+2016/06/16 12:46:47 AM : root : INFO : Done queue: Process-4 completed {'Header': 8, 'Lines': [{'Quantity': '4', 'Product': 'D'}, {'Quantity': '1', 'Product': 'A'}, {'Quantity': '0', 'Product': 'E'}]}.
+2016/06/16 12:46:47 AM : root : INFO : Completed. took 0.253493070602417 seconds

@@ -4,17 +4,19 @@
 Data/order Allocator: Generate order randamly using multiprocessing Pool class.
 The orders are generated in parallel by using Pool of multprocessing.
 The orders are also validated in parallel by different pool objects.
-This module demonstrates both multiprocessing of order generation and validation.
+This module demonstrates multiprocessing of order generation.
 
 """
 import logging
 import random
+import sys
 from multiprocessing import Pool
 from time import time
 # from module for this app
 from constants import *
 
-logging.getLogger(__name__)
+#logging.getLogger(__name__)  # does not work
+logging.getLogger(sys.argv[0].rstrip('.py'))
 hdr = 0
 
 def gen_order():
@@ -32,10 +34,9 @@ def gen_order():
     hdr += 1
     test_prods = []
     # valid product lines
-    for i in range(len(PRODUCT_NAMES)):
-        test_prods.append(PRODUCT_NAMES[i])
+    test_prods.extend(PRODUCT_NAMES)
     # invalid product lines
-    test_prods.extend(['F', 'G',])
+    test_prods.extend(['F'])
     # num of lines to include in the order, 0-5 lines, 0 line invalid, got lots of invalid orders!
     #num_lines = random.randint(0,5)
     num_lines = random.randint(1,5)
@@ -46,7 +47,6 @@ def gen_order():
     for i in range(num_lines):
         prod_s = prod_sample[i]
         # quantity should be an integer in the order, but example input shows it as string
-        #quana = random.randint(0,9)
         quan_s = str(random.randint(0,6))
         line = {PRODUCT : prod_s, QUANTITY : quan_s}
         lines.append(line)
@@ -64,7 +64,7 @@ def validate_order(order):
        Examples of valid order:
        {"Header": 1, "Lines": {"Product": "A", "Quantity": "1"},{"Product": "C", "Quantity": "4"}} 
        
-       Examples of invalide order:
+       Examples of invalid order:
        {"Header": 1, "Lines": {"Product": "B", "Quantity": "0"}}    ---> Total demand is 0
        {"Header": 1, "Lines": {"Product": "D", "Quantity": "6"}}    ---> 6 is > max 5 allowed
     
@@ -84,10 +84,10 @@ def validate_order(order):
         # validate Header value
         hdr = order[HEADER]
         if not isinstance(hdr, int) or hdr < 1:
-            logging.error('Invalid order, Header not integer greater than 0: %s' %(order))
+            logging.error('Invalid order, Header not greater than 0: %s' %(order))
             return False
        
-        # validate Lines, total quantity ordered must be positive, > 0   
+        # validate Lines, must have at least one pair  
         lines = order[LINES]
         if len(lines) < 1:
             logging.error('Invalid order, missing product and/or quantity: %s' %(lines))
@@ -97,7 +97,7 @@ def validate_order(order):
         for line in lines:
             keys = line.keys()
             if len(keys) != 2 and PRODUCT not in keys and QUANTITY not in keys:
-                logging.error('Invalid order, missing product name and/or quantity keys: %s' %(line))
+                logging.error('Invalid order, missing product name and/or quantity key: %s' %(line))
                 return False
             quantity = int(line[QUANTITY])
             if line[PRODUCT] not in PRODUCT_NAMES or quantity < 0 or quantity > 5:
@@ -121,6 +121,7 @@ def validate_order(order):
 def __test_validate_order():
     """Test to validate order for unit testing."""
     
+    logging.info("Begin - Unit testing of order validation: __test_validate_order().")
     sampleOrders = [
                     {'Header': 1, "Lines": [{"Product": "A", "Quantity": "1" },{"Product": "C", "Quantity": "1"}]},
                     {'Header': 2, "Lines": [{"Product": "B", "Quantity": "0" },{"Product": "C", "Quantity": "0"}]},
@@ -132,26 +133,31 @@ def __test_validate_order():
                    ]
     for order in sampleOrders:
         if validate_order(order):
-            print ('Valid: %s' %(order))
+            print ('Valid:   %s' %(order))
         else:
-            print ('Invalids: %s' %(order))
+            print ('Invalid: %s' %(order))
             
+    logging.info("Ends  - Unit testing of order validation: __test_validate_order().")
+    
 
 if __name__ == '__main__':    
-    logging.info('Begins - order generation.')
+    logging.info('Begins - order generation: main')
     tstart = time()
     # Uncomment this test method to ensure validation works as expected
-    #__test_validate_order()
+    __test_validate_order()
     try:
         # with Pool() works in Python 3.5, gives __exit__ error in Python 2.7
         with Pool(CPUS) as pool:
-            # generate multiple orders, valid/invalid, asynchronously.
-            multiple_orders = [pool.apply_async(gen_order, ()) for i in range(10)]
+            # generate multiple orders, valid/invalid, asynchronously.ss
+            multiple_orders = [pool.apply_async(gen_order, ()) for i in range(20)]
             for order in multiple_orders:
-                print (order.get(timeout=1))
+                order_in = order.get(timeout=1)
+                print (validate_order(order_in), order_in)
             pool.close()
-        logging.info('Completed unit testing order generation. Took %d seconds.' %(time() - tstart))
+        logging.info('Completed unit testing of order generation. Took %d seconds.' %(time() - tstart))
     except Exception as exc:
         logging.exception('Exception when generating order: %s' %(exc))
+        
+    logging.info('Ends  - order generation: main')
  
        
